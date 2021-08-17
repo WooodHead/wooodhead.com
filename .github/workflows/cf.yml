@@ -23,10 +23,10 @@ jobs:
         with:
           node-version: "12"
       # Install and build Docusaurus website
-      # - name: Build Docusaurus website
-      #   run: |
-      #     npm install 
-      #     npm run build
+      - name: Build Docusaurus website
+        run: |
+          npm install 
+          npm run build
       - name: Deploy static site to AWS
         uses: onramper/action-deploy-aws-static-site@v1.0.0
         with:
