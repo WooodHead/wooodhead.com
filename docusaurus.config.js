@@ -28,6 +28,18 @@ module.exports = {
           position: 'left',
           label: 'Tutorial',
         },
+        {
+          to: '/docs-api/Intro',    // ./docs-api/Intro.md
+          label: 'API',
+          position: 'left',
+          activeBaseRegex: `/docs-api/`,
+        },
+        {
+          to: '/docs-system/Intro',  // ./docs-system/Intro.md
+          label: 'My System',
+          position: 'left',
+          activeBaseRegex: `/docs-system/`,
+        },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/facebook/docusaurus',
@@ -108,4 +120,24 @@ module.exports = {
       },
     ],
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs-api',
+        path: 'docs-api',
+        routeBasePath: 'docs-api',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs-system',
+        path: 'docs-system',
+        routeBasePath: 'docs-system',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+  ]
 };
