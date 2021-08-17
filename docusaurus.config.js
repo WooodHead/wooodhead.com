@@ -1,20 +1,6 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-// Reverse the sidebar items ordering (including nested category items)
-function reverseSidebarItems (items) {
-  // Reverse items in categories
-  const result = items.map((item) => {
-    if (item.type === 'category') {
-      return { ...item, items: reverseSidebarItems(item.items) };
-    }
-    return item;
-  });
-  // Reverse items at current level
-  result.reverse();
-  return result;
-}
-
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'My Site',
@@ -24,8 +10,8 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'wooodhead', // Usually your GitHub org/user name.
+  projectName: 'wooodhead.com', // Usually your repo name.
   themeConfig: {
     hideableSidebar: true,
 

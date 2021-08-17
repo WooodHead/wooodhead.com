@@ -1,0 +1,9 @@
+- name: Docusaurus Auto Actions
+  # You may pin to the exact commit or the version.
+  # uses: sunny0826/auto-docs-action@2c236471917c830f8fdf6485e824147e70377f41
+  uses: sunny0826/auto-docs-action@v0.1.7
+  with:
+    # github page repo
+    gh-page: 
+    # path of docs dir
+    docs-path: # default is docs
