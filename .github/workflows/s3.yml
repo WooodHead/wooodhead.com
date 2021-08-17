@@ -28,14 +28,6 @@ jobs:
           cd website
           npm install 
           npm run build
-      - name: Deploy to GitHub Pages
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v2
-        with:
-          target_branch: gh-pages
-          build_dir: build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Docusaurus S3 Sync
         # You may pin to the exact commit or the version.
         # uses: turnerlabs/s3-docusaurus-sync-action@2a0da8c8cef39d9ba9255b5616db2f339111eebc
