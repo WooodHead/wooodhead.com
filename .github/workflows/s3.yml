@@ -31,4 +31,10 @@ jobs:
         if: success()
         # You may pin to the exact commit or the version.
         # uses: turnerlabs/s3-docusaurus-sync-action@2a0da8c8cef39d9ba9255b5616db2f339111eebc
-        uses: turnerlabs/s3-docusaurus-sync-action@1.0.2
+      - uses: turnerlabs/s3-docusaurus-sync-action@master
+        env:
+          AWS_DEFAULT_REGION: "us-west-1"
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
