@@ -28,7 +28,8 @@ jobs:
           npm install 
           npm run build
       - name: Docusaurus S3 Sync
-      - uses: turnerlabs/s3-docusaurus-sync-action@master
+        if: success()
+        uses: turnerlabs/s3-docusaurus-sync-action@master
         env:
           AWS_DEFAULT_REGION: "us-west-1"
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
