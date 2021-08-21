@@ -1,5 +1,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const path = require('path');
+
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -14,7 +16,10 @@ module.exports = {
   projectName: 'wooodhead.com', // Usually your repo name.
   themeConfig: {
     hideableSidebar: true,
-
+    // colorMode: {
+    // disableSwitch: true,
+    // respectPrefersColorScheme: false,
+    // },
     navbar: {
       title: 'My Site',
       logo: {
@@ -29,13 +34,13 @@ module.exports = {
           label: 'Tutorial',
         },
         {
-          to: '/docs-api/Intro',    // ./docs-api/Intro.md
-          label: 'API',
+          to: '/typescript/intro',    // ./docs-api/Intro.md
+          label: 'TypeScript',
           position: 'left',
-          activeBaseRegex: `/docs-api/`,
+          activeBaseRegex: `/typescript/`,
         },
         {
-          to: '/docs-system/Intro',  // ./docs-system/Intro.md
+          to: '/docs-system/intro',  // ./docs-system/Intro.md
           label: 'My System',
           position: 'left',
           activeBaseRegex: `/docs-system/`,
@@ -121,12 +126,13 @@ module.exports = {
     ],
   ],
   plugins: [
+    path.resolve(__dirname, "plugins/loaders"),
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'docs-api',
-        path: 'docs-api',
-        routeBasePath: 'docs-api',
+        id: 'typescript',
+        path: 'typescript',
+        routeBasePath: 'typescript',
         sidebarPath: require.resolve('./sidebars.js'),
       },
     ],
