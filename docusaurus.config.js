@@ -16,7 +16,10 @@ module.exports = {
   projectName: 'wooodhead.com', // Usually your repo name.
   themeConfig: {
     hideableSidebar: true,
-
+    // colorMode: {
+    // disableSwitch: true,
+    // respectPrefersColorScheme: false,
+    // },
     navbar: {
       title: 'My Site',
       logo: {
