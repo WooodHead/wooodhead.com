@@ -145,5 +145,14 @@ module.exports = {
         sidebarPath: require.resolve('./sidebars.js'),
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'draft',
+        path: 'draft',
+        routeBasePath: 'draft',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
   ]
 };
