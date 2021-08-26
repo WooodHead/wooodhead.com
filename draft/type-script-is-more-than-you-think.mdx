@@ -55,7 +55,7 @@ type Y = number;
 type Z = boolean;
 ```
 
-## 值和变量(Values and variables)
+## 值和变量（Values and variables）
 
 在 TS 的类型系统中，是否也可以进行常见的赋值操作呢？把一个值赋值给一个变量，变量之间再进行运算？直接看代码：
 
@@ -70,21 +70,15 @@ let a:X = 'abc';
 a = 123; // 报错
 ```
 
-> 注意：这里的意思是 TS 里哪些语法**相当于**其他语言里的 `value` 和 `variable`。这里说的 `value` 不要跟前面提到的 `value 层和 type 层` 里的 `value` 混淆。JavaScript 这一层里全都是 value，类型系统 (type system) 这一层里全都是 type。
+<!-- > 注意：这里的意思是 TS 里哪些语法**相当于**其他语言里的 `value` 和 `variable`。这里说的 `value` 不要跟前面提到的 `value 层和 type 层` 里的 `value` 混淆。JavaScript 这一层里全都是 value，类型系统 (type system) 这一层里全都是 type。 -->
 
-它是一种类型，值在这一层被表示为一种类型。我们可以通过典型的赋值运算符将值赋给变量。
-
-At the left we have alias, name which we set for the value, on the right side we have the value. Variable `X` has value `string`.
-
-> **Note** I say variable because variable is a term we all programmers know, in TS there are only single assignment variables, so we cannot re-declare the value, naturally then its like JS `const`
->
 > **Note** Type in TSts is not only like const, but also like immutable const, as it cannot be mutated. We can compose types but never change the original one.
 
-```
-type X = 1;   /* is TSts🟦 equivalent for JS🟨 : */ const X = 1;
-```
+> 注意：TSts 里的 `type` 不能二次赋值，有点像 `const` 或者 `immutable` 的概念，我们可以用两个 `type` 组合成一个新的 `type`，但是不能修改已经定义好的 `type`。
 
-Enter fullscreen mode Exit fullscreen mode
+```ts
+type X = 1;   /* 类似于：*/ const X = 1;
+```
 
 ## [](https://dev.to/macsikora/typescript-is-more-than-you-think-2nbf#types-of-types)Types of types
 
@@ -100,18 +94,16 @@ In the next part of the article I will use such terms:
 X extends string /*is TSts🟦 equivalent for annotated JS🟨 */ const X: string
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 ## [](https://dev.to/macsikora/typescript-is-more-than-you-think-2nbf#operators)Operators
+## 操作符（Operators）
 
-Not surprisingly type level TypeScript has its own operators, below some of them
-
-- `A = B` assign
-- `A & B` intersection
-- `A | B` union
-- `keyof A`
-- `A extends B ? C : D` condition
-- `K in T` iteration
+- `A = B`： assign 赋值
+- `A & B`： intersection 交集
+- `A | B`： union 并集
+- `K keyof A`： K 是 A 的键（A 是对象）
+- `A extends B ? C : D` 三目运算符，B 存在时，A extends C，B 不存在时，A extends D
+- `K in T` iteration 循环
 
 ```
 // TSts🟦
@@ -120,7 +112,6 @@ type D = A & B | C // D is combined A and B or C
 type Keys = keyof {a: string, b: boolean} // get property keys in form of union
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 ## [](https://dev.to/macsikora/typescript-is-more-than-you-think-2nbf#conditions-and-equality)Conditions and equality
 
@@ -134,7 +125,6 @@ type AisB = A extends B ? true : false // false
 type BisA = B extends A ? true : false // true
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 As you can see `B` can be used as `A` but not in other way round.
 
@@ -145,7 +135,6 @@ type B = 1
 type AisBandBisA = A extends B ? B extends A ? true : false : false // true
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Above is full equality check, we check in two directions, and then types are considered equal.
 
@@ -168,7 +157,6 @@ type Result2 = IsEqual<1, 2> // false
 type Result3 = IsEqual<"a","a"> // true
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Function `IsEqual` has two arguments `A, B` which can be every type. So function works with any kind of type (single arity kind `*`). But we can create functions with more precised arguments requirements.
 
@@ -178,7 +166,6 @@ type GetLength<A extends Array<any>> = A['length']
 type Length = GetLength<['a', 'b', 'c']> // evaluates to 3
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Function `GetLength` is a function which works only with types being an `Array<any>` kind. Take a look again at these two functions, if I put them right before JS functions what would you see?
 
@@ -199,7 +186,6 @@ type GetLength<A extends Array<any>> = A['length']
 const getLength = (a: Array<any>) => a['length']
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Almost the same thing, don't you think? I hope now you are quite convinced that popular generic types are just functions evaluated at the compile time 💪
 
@@ -216,7 +202,6 @@ type Result1 = IfElse<0, 1, 'Equal', 'Not Equal'> // Not Equal
 type Result2 = IfElse<1, 1, 'Equal', 'Not Equal'> // Equal
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 ## [](https://dev.to/macsikora/typescript-is-more-than-you-think-2nbf#local-variables)Local variables
 
@@ -240,7 +225,6 @@ function mergePropertyValue(a, b, prop) {
 }
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 In the list of arguments, at the end we can put local variables and assign value to them, it is a great tool for aliasing evaluated constructs. In above example we didn't gain a lot, but such local aliases can be handy if the type is more complicated, and we can also use other function there! Let's try to make equality check for three arguments.
 
@@ -260,7 +244,6 @@ type Result3 = AreEqual<'A', 'A', 'A'> // true
 type Result4 = AreEqual<'A', 'A', 'B'> // false
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 In above definition `_AisB` and `_BisC` can be considered as local variables of `AreEqual` function.
 
@@ -280,7 +263,6 @@ type Y = {
 } // {a: 1 | null, b: 1 | null, c: 1 | null}
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Type `Y` is evaluated by iterating in `for in` loop style over type `X`, to every field of `X` we append additional value `null`. **TSts** can do more, we can even just do iteration, lets say from 0 to 5.
 
@@ -300,7 +282,6 @@ for (let i = 0; i<= 6; i++) {
 }
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 We just have generated type which represents 6-elements array with values from 0 to 5. Its amazing, on the type level we have iterated from `i=0` to `i=5` and pushed `i` to array. Looks like `for loop` doesn't it?
 
@@ -317,7 +298,6 @@ type HasValuesOfType<T extends object, F> = ({
 }[keyof T]) extends false ? false : true
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Above function `HasValuesOfType` is traversing argument being an kind of object (type of types). Function is checking if the value of the property has given type, if yes, its saying `true`, if not, it does the recursive call to itself if the property is also an object. In the result function will tell us if at any level of the type there exists the wanted type.
 
@@ -347,7 +327,6 @@ type X = [{
 type Result = MapUsers<X> // [{name: 'John'}, {name: 'Tom'}]
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Function `MapUsers` works with array of users kind, and maps every user by removing `lastname`. Take a look how we map - `{ name: T[K]['name']}`, in every iteration over the type `T`, we get value at this point `T[K]` and take `name` property which we put to the new value.
 
@@ -369,7 +348,6 @@ type Book = {
 type BookWithoutPrice = FilterField<Book, 'price'> // {id: number, name: string}
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 > **Note** filtering tuple types is not so simple, language doesn't support it without very sophisticated tricks which are outside the scope of this article.
 
@@ -394,7 +372,6 @@ type CountProps<T extends object, _Arr = KeysArray<T>> = _Arr extends Array<any>
 type Y = CountProps<{ a: 1, b: 2, c: 3, d: 1 }> // Evaluates to 4
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Yes a lot of code, yes quite complicated, we needed to use some additional helper type `Prepend` and `KeysArray`, but finally we were able to count the number of properties in the object, so we've reduced the object from `{ a: 1, b: 2, c: 3, d: 4 }` to `4` 🎉.
 
@@ -428,7 +405,6 @@ const d = [0, ...c];
 
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 As we can see thanks to variadic tuple types, operations on tuples at TSts look very similar to operations on Arrays in JS with using spread syntax.
 
@@ -451,7 +427,6 @@ const lastName = "Doe";
 const fullName = `${name} ${lastName}`;
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 What about concatenation of strings in the list?
 
@@ -475,7 +450,6 @@ type NamesSpace = IntoString<Names, " "> // "Adam Jack Lisa Doroty"
 type NamesStars = IntoString<Names, "⭐️"> // "Adam⭐️Jack⭐️Lisa⭐️Doroty"
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Above example maybe looks little bit more complicated, but proves that we can have generic type level function which will concatenate strings with given separator.
 
@@ -490,7 +464,6 @@ type HigherOrder<G> = G<1> // 🛑 higher order function doesn't compile
 type Result = HigherOrder<ExampleFunction> // 🛑 passing function as argument doesn't compile
 ```
 
-Enter fullscreen mode Exit fullscreen mode
 
 Unfortunately (or fortunately) there is no such option, at type level that sort of thing has a name - **Higher Kinded Types**, such constructs are available in for example Haskell programming language.
 
