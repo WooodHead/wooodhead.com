@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "docusaurus start",
-    "dev": "docusaurus start",
+    "dev": "docusaurus start --port 5000",
     "build": "docusaurus build",
     "docusaurus": "docusaurus",
     "swizzle": "docusaurus swizzle",
