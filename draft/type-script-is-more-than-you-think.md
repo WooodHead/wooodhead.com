@@ -118,6 +118,8 @@ type Keys = keyof {a: string, b: boolean} // get property keys in form of union
 
 As I wrote we have possibility to do conditions by condition operator(conditional type as TS docs say), how about checking if something is equal to another thing? In order to achieve such we need to understand that when we ask `A extends B` it means if `A` then `B` and `A` can be used as `B`, what conveys equality in the one direction (operation is not commutative), if `A extends B` it doesn't implies that `B extends A`. To check equality we need to perform the check in both directions.
 
+
+
 ```
 // TSts🟦
 type A = string
@@ -470,13 +472,29 @@ Unfortunately (or fortunately) there is no such option, at type level that sort 
 
 It also means we cannot create polymorphic functions like map, filter and reduce, as those functional constructs demand kind `* -> *`(function) as argument.
 
-## [](https://dev.to/macsikora/typescript-is-more-than-you-think-2nbf#standard-library)Standard library
+很遗憾的一点是，
+
+这也意味着我们不能创建像map、filter和reduce这样的多态函数，因为这些函数结构需要种类`*->*`（函数）作为参数。
+
+## [](https://dev.to/macsikora/typescript-is-more-than-you-think-2nbf#standard-library)
+## Standard library
 
 Every language has some standard library, no difference with TypeScript type level language. It has standard library, called in official documentation ["utility types"](https://www.typescriptlang.org/docs/handbook/utility-types.html). Despite the name, utility types are type level functions included in TypeScript. These functions can help with advanced type transformations without the need of writing everything from scratch.
 
-## [](https://dev.to/macsikora/typescript-is-more-than-you-think-2nbf#in-summary)In summary
 
+每种编程语言都有一些标准库，TypeScript 的类型系统也不例外。它的标准库在官方文档中被称为["实用类型(utility types)"](https://www.typescriptlang.org/docs/handbook/utility-types.html)。这些工具函数可以帮助我们进行一些高级类型之间的转换，我们不需要从头造每一个轮子。
+
+
+## [](https://dev.to/macsikora/typescript-is-more-than-you-think-2nbf#in-summary)
+## In summary
+
+## 总结
 TypeScript type system **TSts** is something which should be considered as fully flavored language, it has all the things any language should have, we have variables, functions, conditions, iterations, recursion, we can compose, we can write sophisticated transformations. Type system is expression based and operates only on immutable values(types). It has no higher order functions, but it doesn't mean will not have them 😉.
+
+TypeScript 的类型系统 **TSts** 应该被看作是一门完整的编程语言，它包含编程语言该有的所有组成，我们有变量、函数、条件、循环、递归，我们可以对这些部分进行组合，可以编写复杂的转换。这一类型系统是基于表达式的，只对不可变的值（类型）进行操作。它没有高阶函数，但这并不意味着不会有它们😉。
+
+
+参考链接：
 
 Additional links:
 
