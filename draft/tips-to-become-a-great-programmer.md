@@ -1,6 +1,5 @@
-![Cover image for Tips to become a great programmer](https://res.cloudinary.com/practicaldev/image/fetch/s--FQgkXbK3--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/c54iorli2fec0b0gycdg.jpg)
+Tips to become a great programmer
 
- [![](https://res.cloudinary.com/practicaldev/image/fetch/s--mVJkURmx--/c_fill,f_auto,fl_progressive,h_50,q_auto,w_50/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/653386/d7cc30de-4fdb-44d0-9644-545bad8b67f6.png) Christopher Glikpo](https://dev.to/cglikpo)
 
 A learner and a Youtuber who likes to write Technical Blog. https://www.youtube.com/c/ChristopherGlikpo
 
