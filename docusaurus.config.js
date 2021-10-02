@@ -40,10 +40,10 @@ module.exports = {
           activeBaseRegex: `/typescript/`,
         },
         {
-          to: '/docs-system/intro',  // ./docs-system/Intro.md
-          label: 'My System',
+          to: '/geek/index',  // ./docs-system/Intro.md
+          label: '奇技淫巧',
           position: 'left',
-          activeBaseRegex: `/docs-system/`,
+          activeBaseRegex: `/geek/`,
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
@@ -152,6 +152,16 @@ module.exports = {
         path: 'draft',
         routeBasePath: 'draft',
         sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'geek',
+        path: 'geek',
+        routeBasePath: 'geek',
+        sidebarPath: require.resolve('./sidebars.js'),
+        sidebarCollapsed: false
       },
     ],
   ]
