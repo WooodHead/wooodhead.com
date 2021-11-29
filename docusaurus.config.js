@@ -47,7 +47,7 @@ module.exports = {
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/wooodhead/wooodhead.com',
           label: 'GitHub',
           position: 'right',
         },
