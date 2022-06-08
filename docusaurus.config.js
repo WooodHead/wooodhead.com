@@ -35,6 +35,12 @@ module.exports = {
           position: 'left',
           label: 'Tutorial',
         },
+        {
+          to: '/react',    // ./docs-api/Intro.md
+          label: 'React',
+          position: 'left',
+          // activeBaseRegex: `/react/`,
+        },
         // {
         //   to: '/typescript/intro',    // ./docs-api/Intro.md
         //   label: 'TypeScript',
@@ -129,6 +135,15 @@ module.exports = {
   ],
   plugins: [
     path.resolve(__dirname, "plugins/loaders"),
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'react',
+        path: 'react',
+        routeBasePath: 'react',
+        sidebarPath: require.resolve('./sidebars.js'),
+      },
+    ],
     [
       '@docusaurus/plugin-content-docs',
       {
