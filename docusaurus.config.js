@@ -35,18 +35,18 @@ module.exports = {
           position: 'left',
           label: 'Tutorial',
         },
-        {
-          to: '/typescript/intro',    // ./docs-api/Intro.md
-          label: 'TypeScript',
-          position: 'left',
-          activeBaseRegex: `/typescript/`,
-        },
-        {
-          to: '/docs-system/intro',  // ./docs-system/Intro.md
-          label: 'My System',
-          position: 'left',
-          activeBaseRegex: `/docs-system/`,
-        },
+        // {
+        //   to: '/typescript/intro',    // ./docs-api/Intro.md
+        //   label: 'TypeScript',
+        //   position: 'left',
+        //   activeBaseRegex: `/typescript/`,
+        // },
+        // {
+        //   to: '/docs-system/intro',  // ./docs-system/Intro.md
+        //   label: 'My System',
+        //   position: 'left',
+        //   activeBaseRegex: `/docs-system/`,
+        // },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/wooodhead/wooodhead.com',
