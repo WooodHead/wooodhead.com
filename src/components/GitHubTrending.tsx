@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Repo from './Repo';
 
-export default function GitHubTrending () {
+export default function GitHubTrending() {
   const [repos, setRepos] = useState([]);
   useEffect(() => {
     let isMounted = true;               // note mutable flag
@@ -24,9 +24,6 @@ export default function GitHubTrending () {
     return () => { isMounted = false }; // cleanup toggles value, if unmounted
   }, []);
 
-  useEffect(async () => {
-
-  }, []);
   return (
     <div className={'repos'}>
       <h1>Github Trending</h1>
