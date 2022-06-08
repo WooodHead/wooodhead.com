@@ -29,6 +29,7 @@ export default function GitHubTrending () {
   }, []);
   return (
     <div className={'repos'}>
+      <h1>Github Trending</h1>
       {
         repos.map((repo) => {
           return <Repo key={repo.title} repo={repo}></Repo>
