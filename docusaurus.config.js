@@ -15,7 +15,9 @@ module.exports = {
   organizationName: 'wooodhead', // Usually your GitHub org/user name.
   projectName: 'wooodhead.com', // Usually your repo name.
   themeConfig: {
-    hideableSidebar: true,
+    docs: {
+      sidebar: { hideable: true }
+    },
     // colorMode: {
     // disableSwitch: true,
     // respectPrefersColorScheme: false,
