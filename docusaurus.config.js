@@ -113,6 +113,14 @@ module.exports = {
   },
   presets: [
     [
+      'docusaurus-plugin-module-alias',
+      {
+        alias: {
+          '@/components': path.resolve(__dirname, './src/components'),
+        },
+      },
+    ],
+    [
       '@docusaurus/preset-classic',
       {
         docs: {

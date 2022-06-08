@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Repo from './Repo';
+import RepoList from '../components/RepoList';
 
 export default function GitHubTrending() {
   const [repos, setRepos] = useState([]);
@@ -26,6 +27,7 @@ export default function GitHubTrending() {
 
   return (
     <div className={'repos'}>
+      <RepoList></RepoList>
       <h1>Github Trending</h1>
       {
         repos.map((repo) => {
